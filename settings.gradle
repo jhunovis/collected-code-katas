@@ -1,0 +1,3 @@
+rootProject.name = 'collected-code-katas'
+include 'fizz-buzz'
+
