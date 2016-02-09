@@ -10,7 +10,7 @@ package jhunovis.fizzbuzz;
  * @author <a href="mailto:jan.hackel@micros.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public class FizzBuzz {
+class FizzBuzz {
     public String translate(int number) {
         if (isDivisibleByThree(number) && isDivisibleByFive(number)) {
             return "FizzBuzz";
