@@ -1,5 +1,7 @@
 package jhunovis.fizzbuzz;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Translate a natural number into "Fizz Buzz" numbers:
  *
@@ -11,5 +13,5 @@ package jhunovis.fizzbuzz;
  * @version $Revision$ $Date$ $Author$
  */
 public interface FizzBuzz {
-    String translate(int number);
+    @NotNull String translate(int number);
 }

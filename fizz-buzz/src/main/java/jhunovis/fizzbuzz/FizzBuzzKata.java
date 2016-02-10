@@ -15,10 +15,10 @@ import java.util.stream.IntStream;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public class FizzBuzzKata {
+class FizzBuzzKata {
 
     public String firstHundredFizzBuzzNumbers() {
-        List<String> translatedNumbers = new FizzBuzzSequence().translate(IntStream.rangeClosed(1, 100));
+        List<String> translatedNumbers = new FizzBuzzSequenceJava().translate(IntStream.rangeClosed(1, 100));
         return translatedNumbers.stream().collect(Collectors.joining(", "));
     }
 

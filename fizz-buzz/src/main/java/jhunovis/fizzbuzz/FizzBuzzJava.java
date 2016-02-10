@@ -1,5 +1,7 @@
 package jhunovis.fizzbuzz;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Java implementation of {@link FizzBuzz}. See there.
  *
@@ -7,6 +9,7 @@ package jhunovis.fizzbuzz;
  * @version $Revision$ $Date$ $Author$
  */
 class FizzBuzzJava implements FizzBuzz {
+    @NotNull
     @Override
     public String translate(int number) {
         if (isDivisibleByThree(number) && isDivisibleByFive(number)) {

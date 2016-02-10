@@ -1,6 +1,7 @@
 package jhunovis.fizzbuzz;
 
 import org.hamcrest.collection.IsIterableContainingInOrder;
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -9,15 +10,20 @@ import java.util.List;
 import static org.junit.Assert.assertThat;
 
 /**
- * A unit-test for {@link FizzBuzzSequence}.
+ * A unit-test for {@link FizzBuzzSequenceJava}.
  *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public class FizzBuzzSequenceTest {
+public class FizzBuzzSequenceJavaTest {
+    @NotNull
+    FizzBuzzSequence fizzBuzzSequence() {
+        return new FizzBuzzSequenceJava();
+    }
+
     @Test
     public void testTranslate_WithVarArgs() throws Exception {
-        List<String> translatedNumbers = new FizzBuzzSequence().translate(1, 2, 3, 4, 5, 6, 10, 12, 15, 16, 20, 45, 89, 90);
+        List<String> translatedNumbers = fizzBuzzSequence().translate(1, 2, 3, 4, 5, 6, 10, 12, 15, 16, 20, 45, 89, 90);
 
         assertThat(
                 translatedNumbers,
@@ -29,7 +35,7 @@ public class FizzBuzzSequenceTest {
 
     @Test
     public void testTranslate_WithIntStream() throws Exception {
-        List<String> translatedNumbers = new FizzBuzzSequence().translate(
+        List<String> translatedNumbers = fizzBuzzSequence().translate(
                 Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 10, 12, 15, 16, 20, 45, 89, 90})
         );
 
