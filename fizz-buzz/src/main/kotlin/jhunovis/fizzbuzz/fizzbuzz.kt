@@ -4,8 +4,7 @@ package jhunovis.fizzbuzz
  * A Kotlin implementation of [FizzBuzz]. Normally a package level function would do very well for this task, but this
  * would make it difficult to re-use the Java unit-tests.
  *
- * @author <a href="mailto:jhunovisl@gmail.com">Jan Hackel</a>
- * @version $Revision$ $Date$ $Author$
+ * @author [Jan Hackel](mailto:jhunovisl@gmail.com)
  */
 class FizzBuzzKotlin : FizzBuzz {
 
@@ -28,14 +27,20 @@ class FizzBuzzKotlin : FizzBuzz {
  * Translate a sequence of natural number to to "Fizz Buzz" numbers.
  * See [FizzBuzz] for what a "Fizz Buzz number" is.
  *
- * @author <a href="mailto:jhunovisl@gmail.com">Jan Hackel</a>
- * @version $Revision$ $Date$ $Author$
+ * @author [Jan Hackel](mailto:jhunovisl@gmail.com)
  */
 class FizzBuzzSequenceKotlin {
 
     private val fizzBuzz: FizzBuzz = FizzBuzzKotlin()
 
-    fun translate(numbers: List<Int>) : List<String> = numbers.map { fizzBuzz.translate(it) }
+    fun translate(numbers: List<Int>) = numbers.map { fizzBuzz.translate(it) }
 
 }
 
+
+class FizzBuzzKataKotlin : FizzBuzzKata {
+    override fun firstHundredFizzBuzzNumbers() =
+            FizzBuzzSequenceKotlin()
+                    .translate((1..100).toList())
+                    .joinToString()
+}

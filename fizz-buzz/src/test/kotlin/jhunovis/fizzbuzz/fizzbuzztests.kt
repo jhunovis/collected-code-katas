@@ -29,3 +29,9 @@ class FizzBuzzSequenceKotlinTest : FizzBuzzSequenceJavaTest() {
         }
     }
 }
+
+class FizzBuzzKataKotlinTest : FizzBuzzKataJavaTest() {
+    override fun fizzBuzzKata(): FizzBuzzKata {
+        return FizzBuzzKataKotlin()
+    }
+}

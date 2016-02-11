@@ -1,5 +1,6 @@
 package jhunovis.fizzbuzz;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -7,18 +8,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.AllOf.allOf;
 
 /**
- * A unit-test for {@link FizzBuzzKata}.
+ * A unit-test for {@link FizzBuzzKataJava}.
  *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public class FizzBuzzKataTest {
+public class FizzBuzzKataJavaTest {
 
     @Test
     public void testFizzBuzzKata() throws Exception {
-        FizzBuzzKata fizzBuzzKata = new FizzBuzzKata();
 
-        String firstFizzBuzzNumbers = fizzBuzzKata.firstHundredFizzBuzzNumbers();
+        String firstFizzBuzzNumbers = fizzBuzzKata().firstHundredFizzBuzzNumbers();
 
         assertThat(
                 firstFizzBuzzNumbers,
@@ -29,5 +29,10 @@ public class FizzBuzzKataTest {
                 )
         );
 
+    }
+
+    @NotNull
+    FizzBuzzKata fizzBuzzKata() {
+        return new FizzBuzzKataJava();
     }
 }

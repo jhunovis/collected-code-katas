@@ -13,5 +13,9 @@ import org.jetbrains.annotations.NotNull;
  * @version $Revision$ $Date$ $Author$
  */
 public interface FizzBuzz {
+    /**
+     * @param number the natural number to translate
+     * @return the fizz-buzz-number for the given number
+     */
     @NotNull String translate(int number);
 }

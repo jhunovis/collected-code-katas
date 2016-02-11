@@ -1,8 +1,6 @@
 package jhunovis.fizzbuzz;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The "Fizz Buzz Kata" main class. The challenge goes like this:
@@ -15,14 +13,9 @@ import java.util.stream.IntStream;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-class FizzBuzzKata {
-
-    public String firstHundredFizzBuzzNumbers() {
-        List<String> translatedNumbers = new FizzBuzzSequenceJava().translate(IntStream.rangeClosed(1, 100));
-        return translatedNumbers.stream().collect(Collectors.joining(", "));
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new FizzBuzzKata().firstHundredFizzBuzzNumbers());
-    }
+public interface FizzBuzzKata {
+    /**
+     * @return the first one hundred "Fizz Buzz numbers" as a comma separated list.
+     */
+    @NotNull String firstHundredFizzBuzzNumbers();
 }
