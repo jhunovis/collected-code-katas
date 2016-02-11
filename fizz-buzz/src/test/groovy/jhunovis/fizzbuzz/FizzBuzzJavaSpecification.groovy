@@ -13,7 +13,7 @@ class FizzBuzzJavaSpecification extends Specification {
     private fizzBuzz = new FizzBuzzJava()
 
     def "Fizz numbers"() {
-        expect:
+        expect: "Any number divisible by 3 but not by 5 must translate to 'Fizz'."
         fizzBuzz.translate(number) == "Fizz"
 
         where:
@@ -21,7 +21,7 @@ class FizzBuzzJavaSpecification extends Specification {
     }
 
     def "Buzz numbers"() {
-        expect:
+        expect: "Any number divisible by 5 but not by 3 must translate to 'Fizz'."
         fizzBuzz.translate(number) == "Buzz"
 
         where:
@@ -29,7 +29,7 @@ class FizzBuzzJavaSpecification extends Specification {
     }
 
     def "FizzBuzz numbers"() {
-        expect:
+        expect: "Any number divisible by 3 and 5 must translate to 'FizzBuzz'."
         fizzBuzz.translate(number) == "FizzBuzz"
 
         where:
@@ -37,7 +37,7 @@ class FizzBuzzJavaSpecification extends Specification {
     }
 
     def "untranslated numbers"() {
-        expect:
+        expect: "Any number neither divisible by 3 nor 5 translates to it string representation."
         fizzBuzz.translate(number) == number.toString()
 
         where:
