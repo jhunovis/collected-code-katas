@@ -21,7 +21,7 @@ class FizzBuzzKotlinTest : FizzBuzzJavaTest() {
  * That is why this test adapts [FizzBuzzSequenceKotlin] to [FizzBuzzSequence].
  */
 class FizzBuzzSequenceKotlinTest : FizzBuzzSequenceJavaTest() {
-    override fun fizzBuzzSequence(): FizzBuzzSequence {
+    internal override fun fizzBuzzSequence(): FizzBuzzSequence {
         val fizzBuzzSequence = FizzBuzzSequenceKotlin()
         return object : jhunovis.fizzbuzz.FizzBuzzSequence {
             override fun translate(vararg numbers: Int) = fizzBuzzSequence.translate(numbers.asList())
@@ -31,7 +31,7 @@ class FizzBuzzSequenceKotlinTest : FizzBuzzSequenceJavaTest() {
 }
 
 class FizzBuzzKataKotlinTest : FizzBuzzKataJavaTest() {
-    override fun fizzBuzzKata(): FizzBuzzKata {
+    internal override fun fizzBuzzKata(): FizzBuzzKata {
         return FizzBuzzKataKotlin()
     }
 }

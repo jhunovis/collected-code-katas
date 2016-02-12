@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public interface FizzBuzz {
+interface FizzBuzz {
     /**
      * @param number the natural number to translate
      * @return the fizz-buzz-number for the given number

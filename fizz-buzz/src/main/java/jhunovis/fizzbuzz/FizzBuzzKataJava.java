@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-class FizzBuzzKataJava implements FizzBuzzKata {
+public class FizzBuzzKataJava implements FizzBuzzKata {
 
     @NotNull
     @Override

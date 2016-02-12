@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
+@SuppressWarnings("WeakerAccess")
 public interface FizzBuzzKata {
     /**
      * @return the first one hundred "Fizz Buzz numbers" as a comma separated list.

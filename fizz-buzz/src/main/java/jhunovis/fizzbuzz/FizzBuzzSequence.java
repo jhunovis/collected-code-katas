@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public interface FizzBuzzSequence {
+interface FizzBuzzSequence {
     @NotNull List<String> translate(int... numbers);
     @NotNull List<String> translate(@NotNull IntStream numbers);
 }
