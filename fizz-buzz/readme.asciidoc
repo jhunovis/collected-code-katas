@@ -9,3 +9,11 @@ three print “Fizz” instead of the number and for the multiples of five
 print “Buzz”. For numbers which are multiples of both three and five
 print “FizzBuzz”."
 
+== Implementation
+
+The Fizz-Buzz-kata is implemented in Java (see [src/main/kotlin/jhunovis/fizzbuzz/FizzBuzzKataJava.java])
+and in Kotlin (see [src/main/kotlin/jhunovis/fizzbuzz/fizzbuzz.kt]).
+
+Unit test have been implemented in JUnit4 for Java and Groovy Spock.
+Since Kotlin has no own testing framework, the Kotlin tests merely
+pull in the Java tests.
