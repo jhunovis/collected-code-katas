@@ -14,13 +14,13 @@ class BerlinClock(val time: LocalTime) {
 
     val upperHourLights: List<Boolean> = listOf(time.hour > 4, time.hour > 9, time.hour > 14, time.hour > 19)
 
-    val lowerHourLights: List<Boolean> = zeroToFourLights(time.hour)
+    val lowerHourLights: List<Boolean> = oneLightPerFiveTimeUnits(time.hour)
 
     val upperMinuteLights: List<Boolean> = (1..11).map { time.minute - it*5 >= 0 }
 
-    val lowerMinuteLights: List<Boolean> = zeroToFourLights(time.minute)
+    val lowerMinuteLights: List<Boolean> = oneLightPerFiveTimeUnits(time.minute)
 
-    private fun zeroToFourLights(timeComponent: Int) =
+    private fun oneLightPerFiveTimeUnits(timeComponent: Int) =
             listOf(
                     timeComponent % 5 >= 1,
                     timeComponent % 5 >= 2,
