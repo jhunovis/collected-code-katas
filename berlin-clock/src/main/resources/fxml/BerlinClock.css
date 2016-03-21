@@ -1,0 +1,23 @@
+.yellowLight.off {
+    -fx-fill: beige;
+    -fx-stroke: black;
+    -fx-stroke-type: outside;
+}
+
+.redLight.off {
+    -fx-fill: beige;
+    -fx-stroke: black;
+    -fx-stroke-type: outside;
+}
+
+.yellowLight.on {
+    -fx-fill: yellow;
+    -fx-stroke: black;
+    -fx-stroke-type: outside;
+}
+
+.yellowLight.on {
+    -fx-fill: red;
+    -fx-stroke: black;
+    -fx-stroke-type: outside;
+}
