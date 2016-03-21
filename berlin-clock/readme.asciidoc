@@ -30,8 +30,8 @@ For example:
 +
 ....
 Y
-RR00
-RRRR
+YY00
+YYYY
 YYYRYYYRYYYRY000
 0000
 ....
