@@ -4,7 +4,7 @@ package jhunovis.fizzbuzz
  * A Kotlin implementation of [FizzBuzz]. Normally a package level function would do very well for this task, but this
  * would make it difficult to re-use the Java unit-tests.
  *
- * @author [Jan Hackel](mailto:jhunovisl@gmail.com)
+ * @author [Jan Hackel](mailto:jhunovis@gmail.com)
  */
 class FizzBuzzKotlin : FizzBuzz {
 
@@ -25,7 +25,7 @@ fun Int.isDivisibleBy(divisor : Int) = this % divisor == 0
  * Translate a sequence of natural number to to "Fizz Buzz" numbers.
  * See [FizzBuzz] for what a "Fizz Buzz number" is.
  *
- * @author [Jan Hackel](mailto:jhunovisl@gmail.com)
+ * @author [Jan Hackel](mailto:jhunovis@gmail.com)
  */
 class FizzBuzzSequenceKotlin {
 
