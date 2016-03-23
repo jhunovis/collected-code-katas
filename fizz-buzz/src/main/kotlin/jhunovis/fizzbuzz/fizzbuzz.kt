@@ -10,18 +10,19 @@ class FizzBuzzKotlin : FizzBuzz {
 
     override fun translate(number: Int): String {
         return when {
-            isDivisibleByThree(number) && isDivisibleByFive(number) -> "FizzBuzz"
-            isDivisibleByThree(number) -> "Fizz"
-            isDivisibleByFive(number) -> "Buzz"
+            number.isDivisibleBy(3) && number.isDivisibleBy(5) -> "FizzBuzz"
+            number.isDivisibleBy(3) -> "Fizz"
+            number.isDivisibleBy(5) -> "Buzz"
             else -> number.toString()
         }
     }
 
-    private fun isDivisibleByFive(number: Int) = number % 5 == 0
 
-    private fun isDivisibleByThree(number: Int) = number % 3 == 0
+
 
 }
+
+fun Int.isDivisibleBy(divisor : Int) = this % divisor == 0
 
 /**
  * Translate a sequence of natural number to to "Fizz Buzz" numbers.
