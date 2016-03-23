@@ -17,9 +17,6 @@ class FizzBuzzKotlin : FizzBuzz {
         }
     }
 
-
-
-
 }
 
 fun Int.isDivisibleBy(divisor : Int) = this % divisor == 0
@@ -38,7 +35,9 @@ class FizzBuzzSequenceKotlin {
 
 }
 
-
+/**
+ * Main entry to produce the first one hundred "fizz buzz numbers".
+ */
 class FizzBuzzKataKotlin : FizzBuzzKata {
     override fun firstHundredFizzBuzzNumbers() =
             FizzBuzzSequenceKotlin()
