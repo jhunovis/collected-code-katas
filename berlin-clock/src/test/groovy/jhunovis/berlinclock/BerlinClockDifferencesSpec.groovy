@@ -23,18 +23,18 @@ class BerlinClockDifferencesSpec extends Specification {
 
         where:
         oldTime                 | newTime                  || lightsSwitchedOff
-        LocalTime.of(0, 0, 0)   | LocalTime.of(0, 0, 1)    || ["seconds-1"]
-        LocalTime.of(0, 1, 0)   | LocalTime.of(0, 0, 0)    || ["minutes-1"]
-        LocalTime.of(0, 5, 0)   | LocalTime.of(0, 0, 0)    || ["five-minutes-1"]
-        LocalTime.of(1, 0, 0)   | LocalTime.of(0, 0, 0)    || ["hours-1"]
-        LocalTime.of(5, 0, 0)   | LocalTime.of(0, 0, 0)    || ["five-hours-1"]
-        LocalTime.of(23, 59, 0) | LocalTime.of(0, 0, 1)    || ["five-hours-1", "five-hours-2", "five-hours-3", "five-hours-4",
-                                                               "hours-1", "hours-2", "hours-3",
-                                                               "five-minutes-1", "five-minutes-2", "five-minutes-3", "five-minutes-4",
-                                                               "five-minutes-5", "five-minutes-6", "five-minutes-7", "five-minutes-8",
-                                                               "five-minutes-9", "five-minutes-10", "five-minutes-11",
-                                                               "minutes-1", "minutes-2", "minutes-3", "minutes-4",
-                                                               "seconds-1"]
+        LocalTime.of(0, 0, 0)   | LocalTime.of(0, 0, 1)    || ["seconds_1"]
+        LocalTime.of(0, 1, 0)   | LocalTime.of(0, 0, 0)    || ["minutes_1"]
+        LocalTime.of(0, 5, 0)   | LocalTime.of(0, 0, 0)    || ["fiveMinutes_1"]
+        LocalTime.of(1, 0, 0)   | LocalTime.of(0, 0, 0)    || ["hours_1"]
+        LocalTime.of(5, 0, 0)   | LocalTime.of(0, 0, 0)    || ["fiveHours_1"]
+        LocalTime.of(23, 59, 0) | LocalTime.of(0, 0, 1)    || ["fiveHours_1", "fiveHours_2", "fiveHours_3", "fiveHours_4",
+                                                               "hours_1", "hours_2", "hours_3",
+                                                               "fiveMinutes_1", "fiveMinutes_2", "fiveMinutes_3", "fiveMinutes_4",
+                                                               "fiveMinutes_5", "fiveMinutes_6", "fiveMinutes_7", "fiveMinutes_8",
+                                                               "fiveMinutes_9", "fiveMinutes_10", "fiveMinutes_11",
+                                                               "minutes_1", "minutes_2", "minutes_3", "minutes_4",
+                                                               "seconds_1"]
     }
 
     @Unroll
@@ -47,17 +47,17 @@ class BerlinClockDifferencesSpec extends Specification {
 
         where:
         oldTime               | newTime                 || lightsSwitchedOn
-        LocalTime.of(0, 0, 1) | LocalTime.of(0, 0, 0)   || ["seconds-1"]
-        LocalTime.of(0, 0, 0) | LocalTime.of(0, 1, 0)   || ["minutes-1"]
-        LocalTime.of(0, 0, 0) | LocalTime.of(0, 5, 0)   || ["five-minutes-1"]
-        LocalTime.of(0, 0, 0) | LocalTime.of(1, 0, 0)   || ["hours-1"]
-        LocalTime.of(0, 0, 0) | LocalTime.of(5, 0, 0)   || ["five-hours-1"]
-        LocalTime.of(0, 0, 1) | LocalTime.of(23, 59, 0) || ["five-hours-1", "five-hours-2", "five-hours-3", "five-hours-4",
-                                                            "hours-1", "hours-2", "hours-3",
-                                                            "five-minutes-1", "five-minutes-2", "five-minutes-3", "five-minutes-4",
-                                                            "five-minutes-5", "five-minutes-6", "five-minutes-7", "five-minutes-8",
-                                                            "five-minutes-9", "five-minutes-10", "five-minutes-11",
-                                                            "minutes-1", "minutes-2", "minutes-3", "minutes-4",
-                                                            "seconds-1"]
+        LocalTime.of(0, 0, 1) | LocalTime.of(0, 0, 0)   || ["seconds_1"]
+        LocalTime.of(0, 0, 0) | LocalTime.of(0, 1, 0)   || ["minutes_1"]
+        LocalTime.of(0, 0, 0) | LocalTime.of(0, 5, 0)   || ["fiveMinutes_1"]
+        LocalTime.of(0, 0, 0) | LocalTime.of(1, 0, 0)   || ["hours_1"]
+        LocalTime.of(0, 0, 0) | LocalTime.of(5, 0, 0)   || ["fiveHours_1"]
+        LocalTime.of(0, 0, 1) | LocalTime.of(23, 59, 0) || ["fiveHours_1", "fiveHours_2", "fiveHours_3", "fiveHours_4",
+                                                            "hours_1", "hours_2", "hours_3",
+                                                            "fiveMinutes_1", "fiveMinutes_2", "fiveMinutes_3", "fiveMinutes_4",
+                                                            "fiveMinutes_5", "fiveMinutes_6", "fiveMinutes_7", "fiveMinutes_8",
+                                                            "fiveMinutes_9", "fiveMinutes_10", "fiveMinutes_11",
+                                                            "minutes_1", "minutes_2", "minutes_3", "minutes_4",
+                                                            "seconds_1"]
     }
 }

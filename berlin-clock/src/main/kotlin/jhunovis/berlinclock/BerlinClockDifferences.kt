@@ -49,13 +49,13 @@ class BerlinClockDifferences(val oldClock: BerlinClock, val newClock: BerlinCloc
     }
 
     private fun findSwitchedOffUpperHourLights()
-            = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.upperHourLights, newClock.upperHourLights, "five-hours")
+            = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.upperHourLights, newClock.upperHourLights, "fiveHours")
 
     private fun findSwitchedOffLowerHourLights()
             = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.lowerHourLights, newClock.lowerHourLights, "hours")
 
     private fun findSwitchedOffUpperMinuteLights()
-            = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.upperMinuteLights, newClock.upperMinuteLights, "five-minutes")
+            = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.upperMinuteLights, newClock.upperMinuteLights, "fiveMinutes")
 
     private fun findSwitchedOffLowerMinuteLights()
             = findLightsSwitchedOffAndMapToLightBulbViewId(oldClock.lowerMinuteLights, newClock.lowerMinuteLights, "minutes")
@@ -64,7 +64,7 @@ class BerlinClockDifferences(val oldClock: BerlinClock, val newClock: BerlinCloc
             = findLightsSwitchedOffAndMapToLightBulbViewId(listOf(oldClock.secondsLight), listOf(newClock.secondsLight), "seconds")
 
     private fun findLightsSwitchedOffAndMapToLightBulbViewId(oldClockLights: List<Boolean>, newClockLights: List<Boolean>, prefix: String)
-            = findIndicesOfLightsTurnedOff(oldClockLights, newClockLights).map { prefix + "-" + (it  + 1) }
+            = findIndicesOfLightsTurnedOff(oldClockLights, newClockLights).map { prefix + "_" + (it  + 1) }
 
     private fun findIndicesOfLightsTurnedOff(oldClockLights: List<Boolean>, newClockLights: List<Boolean>)
             = oldClockLights.indices.filter { oldClockLights[it] && !newClockLights[it] }
