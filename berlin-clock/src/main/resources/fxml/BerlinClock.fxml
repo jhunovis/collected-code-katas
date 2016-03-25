@@ -37,60 +37,61 @@
 
                     <children>
                         <!-- normal time as text -->
-                        <Label text="Label" GridPane.rowIndex="0" GridPane.columnIndex="7" GridPane.columnSpan="3" fx:id="label"/>
+                        <Label fx:id="label" text="Label"
+                               GridPane.rowIndex="0" GridPane.columnIndex="7" GridPane.columnSpan="3"/>
                         <!-- Seconds -->
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="5"
-                                GridPane.rowIndex="0"/>
+                        <Circle fx:id="seconds_1" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="5" GridPane.rowIndex="0"/>
                         <!-- hours 1-->
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="2"
-                                GridPane.rowIndex="1"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="4"
-                                GridPane.rowIndex="1"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="6"
-                                GridPane.rowIndex="1"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="8"
-                                GridPane.rowIndex="1"/>
+                        <Circle fx:id="fiveHours_1" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Circle fx:id="fiveHours_2" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+                        <Circle fx:id="fiveHours_3" styleClass="yellowLight"
+                                radius="27.0" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+                        <Circle fx:id="fiveHours_4" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="8" GridPane.rowIndex="1"/>
                         <!-- hours 2 -->
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="2"
-                                GridPane.rowIndex="2"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="4"
-                                GridPane.rowIndex="2"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="6"
-                                GridPane.rowIndex="2"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="8"
-                                GridPane.rowIndex="2"/>
+                        <Circle fx:id="hours_1" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <Circle fx:id="hours_2" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+                        <Circle fx:id="hours_3" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+                        <Circle fx:id="hours_4" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="8" GridPane.rowIndex="2"/>
                         <!-- minutes 1 -->
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="0"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="1"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="redLight, off" radius="27.0" GridPane.columnIndex="2"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="3"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="4"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="redLight, off" radius="27.0" GridPane.columnIndex="5"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="6"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="7"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="redLight, off" radius="27.0" GridPane.columnIndex="8"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="9"
-                                GridPane.rowIndex="3"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="10"
-                                GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_1" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_2" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_3" styleClass="redLight" radius="27.0"
+                                GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_4" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_5" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_6" styleClass="redLight" radius="27.0"
+                                GridPane.columnIndex="5" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_7" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="6" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_8" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_9" styleClass="redLight" radius="27.0"
+                                GridPane.columnIndex="8" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_10" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="9" GridPane.rowIndex="3"/>
+                        <Circle fx:id="fiveMinutes_11" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="10" GridPane.rowIndex="3"/>
                         <!-- minutes 2 -->
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="2"
-                                GridPane.rowIndex="4"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="4"
-                                GridPane.rowIndex="4"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="6"
-                                GridPane.rowIndex="4"/>
-                        <Circle styleClass="yellowLight, off" radius="27.0" GridPane.columnIndex="8"
-                                GridPane.rowIndex="4"/>
+                        <Circle fx:id="minutes_1" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                        <Circle fx:id="minutes_2" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+                        <Circle fx:id="minutes_3" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+                        <Circle fx:id="minutes_4" styleClass="yellowLight" radius="27.0"
+                                GridPane.columnIndex="8" GridPane.rowIndex="4"/>
                     </children>
                 </GridPane>
             </children>

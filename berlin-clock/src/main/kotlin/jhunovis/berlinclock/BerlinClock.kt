@@ -28,3 +28,5 @@ class BerlinClock(val time: LocalTime) {
                     timeComponent % 5 >= 4
             )
 }
+
+fun berlinClockWithAllLightsOff() = BerlinClock(LocalTime.of(0, 0, 1))
