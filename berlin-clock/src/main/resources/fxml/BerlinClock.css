@@ -1,22 +1,22 @@
-.yellowLight {
+LightBulb {
     -fx-fill: beige;
     -fx-stroke: black;
     -fx-stroke-type: outside;
 }
 
-.yellowLight:on {
+LightBulb:on {
     -fx-fill: yellow;
     -fx-stroke: black;
     -fx-stroke-type: outside;
 }
 
-.redLight {
+LightBulb.redLight {
     -fx-fill: palevioletred;
     -fx-stroke: black;
     -fx-stroke-type: outside;
 }
 
-.redLight:on {
+LightBulb.redLight:on {
     -fx-fill: red;
     -fx-stroke: black;
     -fx-stroke-type: outside;

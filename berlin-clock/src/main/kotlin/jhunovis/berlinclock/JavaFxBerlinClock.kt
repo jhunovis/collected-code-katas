@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.control.Label
+import javafx.scene.shape.Circle
 import javafx.stage.Stage
 import javafx.util.Duration
 import java.net.URL
@@ -84,9 +85,18 @@ class BerlinClockController {
      */
     private fun List<String>.switchAllOn(on : Boolean) =
         this.forEach {
-            lights?.lookup("#" + it)?.pseudoClassStateChanged(PseudoClass.getPseudoClass("on"), on)
+            val light = lights?.lookup("#" + it)
+            if (light is LightBulb) {
+                light.on(on)
+            }
         }
 
+}
+
+class LightBulb : Circle(30.0) {
+    fun on(turnedOn: Boolean) {
+        pseudoClassStateChanged(PseudoClass.getPseudoClass("on"), turnedOn)
+    }
 }
 
 fun main(args : Array<String>) {
