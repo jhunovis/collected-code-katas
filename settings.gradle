@@ -1,4 +1,6 @@
 rootProject.name = 'collected-code-katas'
 include 'fizz-buzz'
 include 'berlin-clock'
+include 'pragdave-code-katas'
+include 'word-wrap'
 
