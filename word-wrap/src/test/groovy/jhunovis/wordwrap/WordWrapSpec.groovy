@@ -1,17 +1,20 @@
 package jhunovis.wordwrap
 
+import spock.lang.Specification
 import spock.lang.Unroll
 
 /**
+ * A Spock specification for Word-Wrap code kata implementations.
+ *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-class WordWrapSpec extends spock.lang.Specification {
+class WordWrapSpec extends Specification {
 
     @Unroll("Whitespace splits: split #text at column #column should be #splitText")
     def "Exact hits at space"() {
         expect:
-        new WordWrap().wrap(text, column) == splitText
+        new WordWrapJava(column).wrap(text) == splitText
 
         where:
         text             | column || splitText
@@ -23,7 +26,7 @@ class WordWrapSpec extends spock.lang.Specification {
     @Unroll("Intra-word splits: split #text at column #column should be #splitText")
     def "Intra-word splits"() {
         expect:
-        new WordWrap().wrap(text, column) == splitText
+        new WordWrapJava(column).wrap(text) == splitText
 
         where:
         text             | column || splitText
@@ -34,7 +37,7 @@ class WordWrapSpec extends spock.lang.Specification {
     @Unroll("Real-word splits: split #text at column #column should be #splitText")
     def "Real-world splits"() {
         expect:
-        new WordWrap().wrap(text, column) == splitText
+        new WordWrapJava(column).wrap(text) == splitText
 
         where:
         text                                                              | column || splitText
@@ -46,7 +49,7 @@ class WordWrapSpec extends spock.lang.Specification {
 
     def "Split lines should end on newline"() {
         expect:
-        new WordWrap().wrap(text, column).every {it.endsWith("\n")}
+        new WordWrapJava(column).wrap(text).every {it.endsWith("\n")}
 
         where:
         text               | column || splitText
