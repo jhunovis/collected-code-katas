@@ -10,38 +10,41 @@ import java.util.List;
 /**
  * Implement the word-wrap kata in Java.
  * <p/>
+ * The "Word-wrap" kata.
+ *
  * You write a class called "Wrapper", that has a single function named "wrap"
  * that takes two arguments, a string, and a column number. The function returns
  * the string, but with line breaks inserted at just the right places to make
  * sure that no line is longer than the column number. You try to break lines at word boundaries.
  * Like a word processor, break the line by replacing the last space in a line with a newline.
+ *
  * (Quoted from <a href="http://codingdojo.org/cgi-bin/index.pl?KataWordWrap">http://codingdojo.org/cgi-bin/index.pl?KataWordWrap</a>)
  *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public final class WordWrap {
-    /**
-     * Split a given text line into multiple text line so that no line is longer than {@code columnWidth}.
-     *
-     * @param textToSplit the text to split
-     * @param columnWidth no line in the result will be longer than this minus one (for the newline).
-     * @return the split text
-     */
-    public List<String> wrap(String textToSplit, final int columnWidth) {
+public final class WordWrapJava {
+
+    private final int column;
+
+    public WordWrapJava(int column) {
+        this.column = column;
+    }
+
+    public List<String> wrap(String textToSplit) {
         List<String> lines = new ArrayList<>();
         String[] splitAtSpace = textToSplit.split(" ");
         String currentLine = "";
         for (String word : splitAtSpace) {
             String currentLinePlusNextWord = join(currentLine, word);
-            if (currentLinePlusNextWord.length() <= columnWidth) {
+            if (currentLinePlusNextWord.length() <= column) {
                 currentLine = currentLinePlusNextWord;
             } else {
                 if (StringUtils.isNotBlank(currentLine)) {
                     lines.add(currentLine + "\n");
                 }
-                lines.addAll(appendNewLine(intraWordSplit(word, columnWidth)));
-                currentLine = fittingTailOf(word, columnWidth);
+                lines.addAll(appendNewLine(intraWordSplit(word, column)));
+                currentLine = fittingTailOf(word, column);
             }
         }
         if (StringUtils.isNotBlank(currentLine)) {
