@@ -21,6 +21,17 @@ class WordWrapSpec extends Specification {
         ""               | 5      || []
         "AAAA"           | 4      || ["AAAA\n"]
         "AAAA BBBB CCCC" | 4      || ["AAAA\n", "BBBB\n", "CCCC\n"]
+
+    }
+
+    def "Multiple subsequent space are removed"() {
+        expect:
+        new WordWrapJava(column).wrap(text) == splitText
+
+        where:
+        text             | column || splitText
+        "   "            | 5      || []
+        "  A   A  "          | 5      || ["A   A\n"]
     }
 
     @Unroll("Intra-word splits: split #text at column #column should be #splitText")
