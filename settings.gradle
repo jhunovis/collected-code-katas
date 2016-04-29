@@ -3,4 +3,5 @@ include 'fizz-buzz'
 include 'berlin-clock'
 include 'pragdave-code-katas'
 include 'word-wrap'
+include 'prime-factors'
 

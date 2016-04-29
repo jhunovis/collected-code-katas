@@ -1,0 +1,12 @@
+= Prime-factor Coding Kata
+
+The exercise requires the programmer to factorize any integer number into its unique sequence of prime factors,
+i.e. a list of prime numbers which multiplied with each other equal the number to factorize.
+
+Examples:
+
+- 8 == 2 * 2 * 2
+- 100 = 2 * 2 * 5 * 5
+- 37 = 37
+
+See http://www.butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata
