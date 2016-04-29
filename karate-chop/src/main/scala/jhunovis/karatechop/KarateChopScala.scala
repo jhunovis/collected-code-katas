@@ -38,7 +38,7 @@ class KarateChopScala(private val sortedData: Array[Int]) {
   }
 
   def find(value: Int): Int = {
-    find(Range(0, sortedData.length), value)
+    find(sortedData.indices, value)
   }
 }
 
