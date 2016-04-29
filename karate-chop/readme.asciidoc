@@ -1,0 +1,19 @@
+= Karate-chop coding kata
+
+[quote, http://codekata.com/kata/kata02-karate-chop/]
+""
+Write a binary chop method that takes an integer search target and a sorted array of integers.
+It should return the integer index of the target in the array, or -1 if the target is not in the array.
+
+You can assume that the array has less than 100,000 elements.
+For the purposes of this Kata, time and memory performance are not issues (assuming the chop terminates before
+you get bored and kill it, and that you have enough RAM to run it).
+""
+
+== Notes and Goals
+
+- Take note on which errors you encounter while implementing this kata.
+
+- Do five different implementation of the kata, e.g. varying in the programming language, iterative vs. recursive, etc.
+Especially versions four and five should require some effort, since there really are not *that* many different approaches
+to this problem...
