@@ -1,0 +1,23 @@
+= Collected coding katas
+
+This is a collections of katas I found on the internet including my solutions.
+
+- For the link:berlin-clock/readme.asciidoc[Berlin Clock Kata] one must represent a day-time as the famous Berlin clock
+  does.
+
+- Number sequences have to translated to Fizz-buzz for the link:fizz-buzz/readme.asciidoc[Fizz-Buzz Kata].
+
+- Numbers must be factorized in to their prime factors for the link:prime-factors/readme.asciidoc[Prime-factors Kata].
+  This is one kata Uncle Bob mentions in his "Clean Coder" book.
+
+- Text must be line-wrapped at a fixed column width for the link:word-wrap/readme.asciidoc[Word-wrap Kata].
+  This is another one mentioned in  Robert C. Martin's "The Clean Coder" book.
+
+- Pragmatic Dave's code katas from http://codekata.com/
+
+  - A binary search has to implemented in at least five different ways for the link:karate-chop/readme.asciidoc[Karate-Chop Kata].
+
+  - For the link:data-munging/readme.asciidoc[Data-munging Kata] one must process various data files.
+
+
+
