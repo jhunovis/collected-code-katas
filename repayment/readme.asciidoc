@@ -1,0 +1,61 @@
+= Programmierung eines Tilgungsplans
+
+Bitte entwickle ein Programm, das durch die Eingaben…
+
+* des Darlehensbetrages,
+* des Sollzinses (in Prozent),
+* der anfänglichen Tilgung (in Prozent) und
+* der Zinsbindung (in Jahren)
+
+den jhunovis.repaymentplan.Tilgungsplan eines Darlehens mit gleichbleibender Rate erstellen kann.
+
+Diese tabellarische Übersicht zeigt dir, wie ein jhunovis.repaymentplan.Tilgungsplan aufgebaut ist:
+
+Datum
+Restschuld
+Zinsen
+Tilgung(+) / Auszahlung(-)
+Rate
+30.11.2015
+-100.000,00 €
+0,00 €
+-100.000,00 €
+-100.000,00 €
+31.12.2015
+-99.833,34 €
+176,67 €
+166,66 €
+343,33 €
+31.01.2016
+-99.666,38 €
+176,37 €
+166,96 €
+343,33 €
+
+
+…
+
+
+31.10.2025
+-77.949,76 €
+138,07 €
+205,26 €
+343,33 €
+30.11.2025
+-77.744,14 €
+137,71 €
+205,62 €
+343,33 €
+Zinsbindungsende
+-77.744,14 €
+18.943,74 €
+22.255,86 €
+41.199,60 €
+
+(Zinsbindung: 10 Jahre, Sollzins: 2,12%, Anfängliche Tilgung: 2%)
+
+Ein jhunovis.repaymentplan.Tilgungsplan besteht aus einer Reihe von Einträgen, wobei der erste die Auszahlung des Darlehens widerspiegelt.
+Jeder (weitere) Eintrag besteht aus einem Datum, der Restschuld, den Zinsen, der Tilgung bzw. Auszahlung sowie der Rate.
+Die Auszahlung soll immer am letzten Tag des aktuellen Monats erfolgen. Die erste Tilgung erfolgt am letzten Tag
+des darauffolgenden Monats. Die Zahlungen eines Tilgungsplans sind monatlich darzustellen.
+Zum Ende der Zinsbindung sind die Restschuld sowie die geleisteten Zahlungen von Interesse.
