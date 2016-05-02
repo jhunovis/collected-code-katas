@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.util.Currency;
+import java.util.Locale;
 
 /**
  * Represents monetary amounts. Immutable.
@@ -22,6 +23,13 @@ public final class Money {
     public Money(@NotNull BigDecimal amount, @NotNull Currency currency) {
         this.amount = amount;
         this.currency = currency;
+    }
+
+    /**
+     * Static factory method producing a money object representing an amount of zero in the local currency.
+     */
+    public static Money zeroForLocalCurrency() {
+        return new Money(BigDecimal.ZERO, Currency.getInstance(Locale.getDefault()));
     }
 
     /**
@@ -51,6 +59,13 @@ public final class Money {
     }
 
     /**
+     * @return the currency for this money object
+     */
+    public Currency currency() {
+        return currency;
+    }
+
+    /**
      * @return {@code true}, iff the amount of this money instance is negative
      */
     public boolean isNegative() {
@@ -64,7 +79,7 @@ public final class Money {
      * @return {@code this - other}
      */
     @NotNull
-    public final Money subtract(@NotNull Money other) {
+    public Money subtract(@NotNull Money other) {
         assertSameCurrency(other);
         return new Money(amount.subtract(other.amount), currency);
     }
@@ -82,7 +97,7 @@ public final class Money {
      * @return the monthly rate of this amount for the given yearly interest
      */
     @NotNull
-    public final Money monthlyRate(@NotNull BigDecimal yearlyRateInPercent) {
+    public Money monthlyRate(@NotNull BigDecimal yearlyRateInPercent) {
         return new Money(percentage(yearlyRateInPercent), currency);
     }
 

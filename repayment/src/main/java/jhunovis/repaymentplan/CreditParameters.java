@@ -26,23 +26,23 @@ public final class CreditParameters {
     private final BigDecimal interestRateInPercent;
     @NotNull
     private final BigDecimal initialRepaymentRateInPercent;
-    private final int runtimeInMonths;
+    private final int durationInMonths;
 
     CreditParameters(@NotNull LocalDate startingMonth, @NotNull Money creditVolume, @NotNull BigDecimal interestRateInPercent,
-                     int runtimeInMonths, @NotNull BigDecimal initialRepaymentRateInPercent) {
+                     int durationInMonths, @NotNull BigDecimal initialRepaymentRateInPercent) {
         if (creditVolume.isNegative()) {
             throw new IllegalArgumentException("Expecting credit volume as positive amount!");
         }
         assertIsPercentage(interestRateInPercent);
         assertIsPercentage(initialRepaymentRateInPercent);
-        if (runtimeInMonths < 1) {
-            throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + runtimeInMonths);
+        if (durationInMonths < 1) {
+            throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + durationInMonths);
         }
 
         this.startingMonth = startingMonth.with(TemporalAdjusters.lastDayOfMonth());
         this.creditVolume = creditVolume;
         this.interestRateInPercent = interestRateInPercent;
-        this.runtimeInMonths = runtimeInMonths;
+        this.durationInMonths = durationInMonths;
         this.initialRepaymentRateInPercent = initialRepaymentRateInPercent;
     }
 
@@ -66,8 +66,8 @@ public final class CreditParameters {
         return initialRepaymentRateInPercent;
     }
 
-    public int runtimeInMonth() {
-        return runtimeInMonths;
+    public int durationInMonths() {
+        return durationInMonths;
     }
 
     private void assertIsPercentage(BigDecimal percentage) {
@@ -92,8 +92,8 @@ public final class CreditParameters {
 
     @NotNull
     private List<MonthlyRepayment> createMonthlyPaymentPlan(MonthlyRepayment repayment) {
-        List<MonthlyRepayment> monthlyRepayments = new ArrayList<>(runtimeInMonth());
-        for (int runtime=0; runtime < runtimeInMonth(); runtime++) {
+        List<MonthlyRepayment> monthlyRepayments = new ArrayList<>(durationInMonths());
+        for (int runtime = 0; runtime < durationInMonths(); runtime++) {
             monthlyRepayments.add(repayment);
             repayment = repayment.nextMonthlyRepayment();
         }

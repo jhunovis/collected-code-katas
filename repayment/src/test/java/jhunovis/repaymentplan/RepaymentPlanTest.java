@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.Month;
 
 import static jhunovis.repaymentplan.IsMonthlyRepayment.isRepaymentWith;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -18,13 +20,13 @@ import static org.junit.Assert.assertThat;
 public final class RepaymentPlanTest {
 
     @Test
-    public void createRepaymentPlan() throws Exception {
+    public void createRepaymentPlan_PaymentLines() throws Exception {
         RepaymentPlan repaymentPlan = RepaymentPlan.builder()
                 .starting(LocalDate.of(2015, Month.NOVEMBER, 30))
                 .creditVolume(Money.euro("100000.00"))
                 .interestRateInPercent("2.12")
                 .repaymentRateInPercent("2.00")
-                .runtimeInYears(10)
+                .durationInYears(10)
                 .createRepaymentPlan();
 
         assertThat(
@@ -41,4 +43,24 @@ public final class RepaymentPlanTest {
                 )
         );
     }
+
+    @Test
+    public void createRepaymentPlan_Summary() throws Exception {
+        RepaymentPlan repaymentPlan = RepaymentPlan.builder()
+                .starting(LocalDate.of(2015, Month.NOVEMBER, 30))
+                .creditVolume(Money.euro("100000.00"))
+                .interestRateInPercent("2.12")
+                .repaymentRateInPercent("2.00")
+                .durationInYears(10)
+                .createRepaymentPlan();
+
+        assertThat(
+                repaymentPlan.summary(),
+                is(equalTo(
+                        new RepaymentSummary(Money.euro("77744.14"), Money.euro("18943.74"), Money.euro("22255.86"), Money.euro("41199.60"))
+                ))
+        );
+    }
+
+
 }

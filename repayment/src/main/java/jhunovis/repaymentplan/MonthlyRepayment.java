@@ -23,7 +23,7 @@ public final class MonthlyRepayment {
     @NotNull
     private final Money monthlyRate;
 
-    public MonthlyRepayment(@NotNull LocalDate dueDate, @NotNull Money debt, @NotNull BigDecimal interestRate, @NotNull Money monthlyRate) {
+    MonthlyRepayment(@NotNull LocalDate dueDate, @NotNull Money debt, @NotNull BigDecimal interestRate, @NotNull Money monthlyRate) {
         this.dueDate = dueDate;
         this.debt = debt;
         this.interestRate = interestRate;

@@ -5,9 +5,12 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 /**
+ * A repayment plan plan for credit with a fixed interest rate over a predefined duration.
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
@@ -27,11 +30,44 @@ public final class RepaymentPlan {
         this.monthlyRepayments = monthlyRepayments;
     }
 
+    /**
+     * Get the individual payments due for each month of this payment plan.
+     */
     @NotNull
     public List<MonthlyRepayment> monthlyRepayments() {
         return Collections.unmodifiableList(monthlyRepayments);
     }
 
+    /**
+     * Get summary on the remaining debt, total interest payed, total repayments payed , and total rates payed
+     * at the end of this payment plan.
+     */
+    public @NotNull RepaymentSummary summary() {
+        RepaymentSummary totals = monthlyRepayments.stream()
+                .reduce(zero(), RepaymentSummary::add, RepaymentSummary::add);
+        return new RepaymentSummary(remainingDebt(), totals.totalInterest(), totals.totalRepayments(), totals.totalRates());
+    }
+
+    private Money remainingDebt() {
+        if (monthlyRepayments.isEmpty()) {
+            return Money.zeroForLocalCurrency();
+        } else {
+            return monthlyRepayments.get(monthlyRepayments.size() - 1).remainingDept();
+        }
+    }
+
+
+    private RepaymentSummary zero() {
+        return RepaymentSummary.zero(currencyForThisPlan());
+    }
+
+    private Currency currencyForThisPlan() {
+        if (monthlyRepayments.isEmpty()) {
+            return Currency.getInstance(Locale.getDefault());
+        } else {
+            return monthlyRepayments.get(0).monthlyRate().currency();
+        }
+    }
 
     /**
      * Creates {@link RepaymentPlan} instances.
@@ -41,12 +77,11 @@ public final class RepaymentPlan {
      */
     public static final class Builder {
 
-
         private LocalDate startingMonth;
         private Money creditVolume;
         private BigDecimal interestRateInPercent;
         private BigDecimal repaymentRateInPercent;
-        private int runtimeInMonths;
+        private int durationInMonths;
 
         public Builder starting(LocalDate startingMonth) {
             this.startingMonth = startingMonth;
@@ -76,22 +111,21 @@ public final class RepaymentPlan {
             return repaymentRateInPercent(new BigDecimal(repaymentRateInPercent));
         }
 
-        public Builder runtimeInMonths(int runtimeInMonths) {
-            this.runtimeInMonths = runtimeInMonths;
+        public Builder durationInMonths(int durationInMonths) {
+            this.durationInMonths = durationInMonths;
             return this;
         }
 
-        public Builder runtimeInYears(int runtimeInYears) {
-            this.runtimeInMonths = runtimeInYears * 12;
+        public Builder durationInYears(int durationInYears) {
+            this.durationInMonths = durationInYears * 12;
             return this;
         }
 
         public RepaymentPlan createRepaymentPlan() {
             CreditParameters creditParameters = new CreditParameters(startingMonth, creditVolume, interestRateInPercent,
-                    runtimeInMonths, repaymentRateInPercent);
+                    durationInMonths, repaymentRateInPercent);
             return creditParameters.createRepaymentPlan();
         }
-
 
 
     }

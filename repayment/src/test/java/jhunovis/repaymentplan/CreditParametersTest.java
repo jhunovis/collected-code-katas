@@ -25,7 +25,7 @@ public final class CreditParametersTest {
     })
     public void paymentRate(String totalCreditAmount, String interestRateInPercent, String repaymentRateInPercent, String expectedMonthlyRepaymentAmount) throws Exception {
         CreditParameters creditParameters = new CreditParameters(anyDate(),
-                Money.euro(totalCreditAmount), interestRate(interestRateInPercent), 0, percent(repaymentRateInPercent));
+                Money.euro(totalCreditAmount), interestRate(interestRateInPercent), 1, percent(repaymentRateInPercent));
 
         assertThat(
                creditParameters.paymentRate(),
