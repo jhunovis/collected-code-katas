@@ -88,6 +88,8 @@ public final class RepaymentPlan {
      */
     public static final class Builder {
 
+        private static final BigDecimal BD_100 = new BigDecimal("100.00");
+
         private LocalDate startingMonth;
         private Money creditVolume;
         private BigDecimal interestRateInPercent;
@@ -100,11 +102,15 @@ public final class RepaymentPlan {
         }
 
         public Builder creditVolume(Money creditVolume) {
+            if (creditVolume.isNegative()) {
+                throw new IllegalArgumentException("Expecting credit volume as positive amount!");
+            }
             this.creditVolume = creditVolume;
             return this;
         }
 
         public Builder interestRateInPercent(BigDecimal interestRateInPercent) {
+            assertIsPercentage(interestRateInPercent);
             this.interestRateInPercent = interestRateInPercent;
             return this;
         }
@@ -114,6 +120,7 @@ public final class RepaymentPlan {
         }
 
         public Builder repaymentRateInPercent(BigDecimal repaymentRateInPercent) {
+            assertIsPercentage(repaymentRateInPercent);
             this.repaymentRateInPercent = repaymentRateInPercent;
             return this;
         }
@@ -123,6 +130,9 @@ public final class RepaymentPlan {
         }
 
         public Builder durationInMonths(int durationInMonths) {
+            if (durationInMonths < 1) {
+                throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + durationInMonths);
+            }
             this.durationInMonths = durationInMonths;
             return this;
         }
@@ -138,6 +148,11 @@ public final class RepaymentPlan {
             return creditParameters.createRepaymentPlan();
         }
 
+        private void assertIsPercentage(BigDecimal percentage) {
+            if (percentage.signum() == -1 || percentage.compareTo(BD_100) >= 1 ) {
+                throw new IllegalArgumentException(percentage + " is not a valid percentage!");
+            }
+        }
 
     }
 }

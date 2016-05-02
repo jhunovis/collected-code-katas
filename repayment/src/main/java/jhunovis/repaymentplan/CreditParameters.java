@@ -16,8 +16,6 @@ import java.util.List;
  */
 public final class CreditParameters {
 
-    private static final BigDecimal BD_100 = new BigDecimal("100.00");
-
     @NotNull
     private final LocalDate startingMonth;
     @NotNull
@@ -30,15 +28,6 @@ public final class CreditParameters {
 
     CreditParameters(@NotNull LocalDate startingMonth, @NotNull Money creditVolume, @NotNull BigDecimal interestRateInPercent,
                      int durationInMonths, @NotNull BigDecimal initialRepaymentRateInPercent) {
-        if (creditVolume.isNegative()) {
-            throw new IllegalArgumentException("Expecting credit volume as positive amount!");
-        }
-        assertIsPercentage(interestRateInPercent);
-        assertIsPercentage(initialRepaymentRateInPercent);
-        if (durationInMonths < 1) {
-            throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + durationInMonths);
-        }
-
         this.startingMonth = startingMonth.with(TemporalAdjusters.lastDayOfMonth());
         this.creditVolume = creditVolume;
         this.interestRateInPercent = interestRateInPercent;
@@ -68,12 +57,6 @@ public final class CreditParameters {
 
     public int durationInMonths() {
         return durationInMonths;
-    }
-
-    private void assertIsPercentage(BigDecimal percentage) {
-        if (percentage.signum() == -1 || percentage.compareTo(BD_100) >= 1 ) {
-            throw new IllegalArgumentException(percentage + " is not a valid percentage!");
-        }
     }
 
     RepaymentPlan createRepaymentPlan() {
