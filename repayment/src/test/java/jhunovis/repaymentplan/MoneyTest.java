@@ -46,6 +46,14 @@ public final class MoneyTest {
     }
 
     @Test
+    public void negate() throws Exception {
+        assertThat(
+                Money.euro("111.33").negate(),
+                is(equalTo(Money.euro("-111.33")))
+        );
+    }
+
+    @Test
     @Parameters({
             "30.00, 10.00, 0.25",
             "77949.76, 2.12, 137.71"

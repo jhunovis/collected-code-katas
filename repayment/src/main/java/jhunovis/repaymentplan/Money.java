@@ -29,7 +29,14 @@ public final class Money {
      * Static factory method producing a money object representing an amount of zero in the local currency.
      */
     public static Money zeroForLocalCurrency() {
-        return new Money(BigDecimal.ZERO, Currency.getInstance(Locale.getDefault()));
+        return zeroFor(Currency.getInstance(Locale.getDefault()));
+    }
+
+    /**
+     * Static factory method producing a money object representing an amount of zero for the given currency.
+     */
+    public static Money zeroFor(Currency currency) {
+        return new Money(BigDecimal.ZERO, currency);
     }
 
     /**
@@ -74,6 +81,7 @@ public final class Money {
 
     /**
      * Subtract the given amount from the amount of this instance and return the result.
+     * Receiver remains unchanged.
      *
      * @param other a monetary amount. Must have the same currency as this.
      * @return {@code this - other}
@@ -84,10 +92,28 @@ public final class Money {
         return new Money(amount.subtract(other.amount), currency);
     }
 
+    /**
+     * Add the amount of the given other money object to the amount of the receiver and return the result.
+     * Receiver remains unchanged.
+     *
+     * @param other provide the amount to add. Must be same currency.
+     * @return {@code this + other}
+     */
     @NotNull
     public Money plus(@NotNull Money other) {
         assertSameCurrency(other);
         return new Money(amount.add(other.amount), currency);
+    }
+
+    /**
+     * Negate the amount of the receiver and return the result.
+     * Receiver remains unchanged.
+     *
+     * @return {@code this * -1}
+     */
+    @NotNull
+    public Money negate() {
+        return new Money(amount.negate(), currency);
     }
 
     /**
