@@ -11,11 +11,14 @@ import java.util.Locale;
 
 /**
  * A repayment plan plan for credit with a fixed interest rate over a predefined duration.
+ *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
 public final class RepaymentPlan {
 
+    @NotNull
+    private final CreditParameters creditParameters;
     @NotNull
     private final List<MonthlyRepayment> monthlyRepayments;
 
@@ -27,7 +30,15 @@ public final class RepaymentPlan {
     }
 
     RepaymentPlan(@NotNull CreditParameters creditParameters, @NotNull List<MonthlyRepayment> monthlyRepayments) {
+        this.creditParameters = creditParameters;
         this.monthlyRepayments = monthlyRepayments;
+    }
+
+    /**
+     * Get the fixed credit parameters for this repayment plan.
+     */
+    public CreditParameters creditParameters() {
+        return creditParameters;
     }
 
     /**
