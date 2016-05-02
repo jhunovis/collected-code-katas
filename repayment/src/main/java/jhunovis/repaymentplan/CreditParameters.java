@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +39,7 @@ public final class CreditParameters {
             throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + runtimeInMonths);
         }
 
-        this.startingMonth = startingMonth;
+        this.startingMonth = startingMonth.with(TemporalAdjusters.lastDayOfMonth());
         this.creditVolume = creditVolume;
         this.interestRateInPercent = interestRateInPercent;
         this.runtimeInMonths = runtimeInMonths;
@@ -79,6 +81,23 @@ public final class CreditParameters {
     }
 
     private List<MonthlyRepayment> createMonthlyPayments() {
-        return null;
+        return createMonthlyPaymentPlan(
+                new MonthlyRepayment(lastDayOfNexMonth(startingMonth), totalDebt(), interestRateInPercent(), paymentRate())
+        );
     }
+
+    private LocalDate lastDayOfNexMonth(LocalDate date) {
+        return date.plusMonths(1L).with(TemporalAdjusters.lastDayOfMonth());
+    }
+
+    @NotNull
+    private List<MonthlyRepayment> createMonthlyPaymentPlan(MonthlyRepayment repayment) {
+        List<MonthlyRepayment> monthlyRepayments = new ArrayList<>(runtimeInMonth());
+        for (int runtime=0; runtime < runtimeInMonth(); runtime++) {
+            monthlyRepayments.add(repayment);
+            repayment = repayment.nextMonthlyRepayment();
+        }
+        return monthlyRepayments;
+    }
+
 }

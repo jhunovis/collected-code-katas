@@ -116,7 +116,10 @@ public final class MonthlyRepayment {
         return "MonthlyRepayment{" +
                 "dueDate=" + dueDate +
                 ", debt=" + debt +
+                ", remaining debt=" + remainingDept() +
                 ", interestRate=" + interestRate +
+                ", interest=" + interest() +
+                ", repayment=" + repayment() +
                 ", monthlyRate=" + monthlyRate +
                 '}';
     }
