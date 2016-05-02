@@ -73,6 +73,13 @@ public final class Money {
     }
 
     /**
+     * @return the amount of this money object
+     */
+    public @NotNull BigDecimal amount() {
+        return amount;
+    }
+
+    /**
      * @return {@code true}, iff the amount of this money instance is negative
      */
     public boolean isNegative() {
