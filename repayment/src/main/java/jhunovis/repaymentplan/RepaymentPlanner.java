@@ -14,7 +14,7 @@ import java.util.Locale;
 public final class RepaymentPlanner {
 
     private final PrintStream out;
-    private CreditParametersFromConsole creditParametersFromConsole;
+    private final CreditParametersFromConsole creditParametersFromConsole;
 
     public RepaymentPlanner() {
         this(new InputStreamReader(System.in), System.out);

@@ -21,7 +21,7 @@ final class FakeUserInputReadable implements Readable {
     @Override
     public int read(@NotNull CharBuffer cb) throws IOException {
         String userInput = waitingUserInput.remove(0);
-        cb.append(userInput + "\n");
+        cb.append(userInput).append("\n");
         return userInput.length() + 1;
     }
 
