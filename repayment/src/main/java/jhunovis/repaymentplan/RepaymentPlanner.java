@@ -48,7 +48,7 @@ public final class RepaymentPlanner {
     private void printCreditParameters(CreditParameters creditParameters) {
         println(
                 String.format(
-                        "Berechne Tilgungsplan ab %s von Kreditsumme %s mit Sollzins %s%% und Tilgung %s%% über %s Monate.",
+                        "Berechne Tilgungsplan ab %s mit Kreditsumme %s, Sollzins %s%% und Tilgung %s%% über %s Monate.",
                         creditParameters.startingMonth(), creditParameters.totalDebt(), creditParameters.interestRateInPercent(),
                         creditParameters.initialRepaymentRateInPercent(), creditParameters.durationInMonths()
                 )
