@@ -13,7 +13,7 @@ import java.util.Locale;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public final class RepaymentPlanPrinter {
+final class RepaymentPlanPrinter {
 
     @NotNull
     private final PrintWriter printWriter;
@@ -35,6 +35,7 @@ public final class RepaymentPlanPrinter {
         printPaymentRow(repaymentPlan.creditParameters());
         printRepaymentRows(repaymentPlan.monthlyRepayments());
         printSummary(repaymentPlan.summary());
+        printWriter.flush();
     }
 
     private void printHeader() {
@@ -51,7 +52,6 @@ public final class RepaymentPlanPrinter {
                     monthlyRepayment.monthlyRate()
             );
         }
-
     }
 
     private void printSummary(RepaymentSummary summary) {
