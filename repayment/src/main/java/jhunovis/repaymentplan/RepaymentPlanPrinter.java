@@ -90,7 +90,7 @@ final class RepaymentPlanPrinter {
     }
 
     private void printRow(String date, String remainingDebt, String interest, String repayment, String rate) {
-        printWriter.printf("%1$16s %2$12s %3$12s %4$25s %5$12s%n", date, remainingDebt, interest, repayment, rate);
+        printWriter.printf("%1$16s %2$15s %3$15s %4$25s %5$15s%n", date, remainingDebt, interest, repayment, rate);
     }
 
 }
