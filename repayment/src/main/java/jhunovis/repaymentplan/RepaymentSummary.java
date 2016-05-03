@@ -61,7 +61,7 @@ public final class RepaymentSummary {
         );
     }
 
-    public @NotNull RepaymentSummary add(MonthlyRepayment other) {
+    @NotNull RepaymentSummary add(MonthlyRepayment other) {
         return new RepaymentSummary(
                 remainingDebt,
                 totalInterest.plus(other.interest()),
@@ -70,7 +70,7 @@ public final class RepaymentSummary {
         );
     }
 
-    public @NotNull RepaymentSummary add(RepaymentSummary other) {
+    @NotNull RepaymentSummary add(RepaymentSummary other) {
         return new RepaymentSummary(
                 remainingDebt,
                 totalInterest.plus(other.totalInterest),

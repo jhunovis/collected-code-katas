@@ -26,6 +26,9 @@ final class CreditParametersFromConsole {
         this.out = out;
     }
 
+    /**
+     * Ask the user to enter credit parameters.
+     */
     public RepaymentPlan.Builder readCreditParametersFromConsole() {
         println("Eingabe der Kreditparameter");
 

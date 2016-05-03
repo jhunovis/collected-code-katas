@@ -59,6 +59,9 @@ public final class CreditParameters {
         return durationInMonths;
     }
 
+    /**
+     * Factory method for repayment plans.
+     */
     RepaymentPlan createRepaymentPlan() {
         return new RepaymentPlan(this, createMonthlyPayments());
     }
