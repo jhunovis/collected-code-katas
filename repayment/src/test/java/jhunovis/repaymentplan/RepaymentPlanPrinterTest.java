@@ -1,9 +1,6 @@
 package jhunovis.repaymentplan;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matcher;
 import org.hamcrest.collection.IsIterableContainingInOrder;
-import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 
 import java.io.PrintWriter;
@@ -14,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -43,7 +39,7 @@ public final class RepaymentPlanPrinterTest {
 
         assertThat(
                 capturedPrintLines().get(0),
-                row("Datum", "Restschuld", "Zinsen", "Tilgung(+)/Auszahlung(-)", "Rate")
+                row("Datum", "Restschuld", "Zinsen", "Tilgung", "Auszahlung", "Rate")
         );
     }
 
@@ -84,20 +80,11 @@ public final class RepaymentPlanPrinterTest {
         );
     }
 
-
     private List<String> capturedPrintLines() {
         return Arrays.asList(capturedPrintOut.toString().split("\n"));
     }
 
-    @NotNull
-    private Matcher<String> row(String dateColumn, String remainingDebtColumn, String interestColumn, String repaymentColumn, String rateColumn) {
-        // this is not perfect as it does guarantee any order
-        return CoreMatchers.allOf(
-                containsString(dateColumn),
-                containsString(remainingDebtColumn),
-                containsString(interestColumn),
-                containsString(repaymentColumn),
-                containsString(rateColumn)
-        );
+    private IsMatchingRegex row(String... columns) {
+        return IsMatchingRegex.matches(String.join(".*", (CharSequence[]) columns));
     }
 }
