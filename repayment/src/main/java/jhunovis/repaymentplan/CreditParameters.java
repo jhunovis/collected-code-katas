@@ -83,4 +83,14 @@ public final class CreditParameters {
         return monthlyRepayments;
     }
 
+    @Override
+    public String toString() {
+        return "CreditParameters{" +
+                "startingMonth=" + startingMonth +
+                ", creditVolume=" + creditVolume +
+                ", interestRateInPercent=" + interestRateInPercent +
+                ", initialRepaymentRateInPercent=" + initialRepaymentRateInPercent +
+                ", durationInMonths=" + durationInMonths +
+                '}';
+    }
 }
