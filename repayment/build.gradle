@@ -11,5 +11,5 @@ dependencies {
     compile 'org.jetbrains:annotations:15.0'
     testCompile 'junit:junit:4.+'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'pl.pragmatists:JUnitParams:1.0.4'
+    testCompile 'pl.pragmatists:JUnitParams:1.0.+'
 }
