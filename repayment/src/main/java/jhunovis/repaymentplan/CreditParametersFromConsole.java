@@ -73,7 +73,7 @@ final class CreditParametersFromConsole {
     }
 
     private BigDecimal readDecimal() {
-        String userInput = scanner.next("\\d+,\\d\\d");
+        String userInput = scanner.next("\\d+((,\\d\\d)?|(,\\d)?)");
         return new BigDecimal(userInput.replace(",", "."));
     }
 
