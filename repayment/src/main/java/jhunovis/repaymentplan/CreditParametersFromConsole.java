@@ -37,7 +37,7 @@ final class CreditParametersFromConsole {
         readCreditVolume(builder::creditVolume);
         readInterestRateInPercent(builder::interestRateInPercent);
         readRepaymentRateInPercent(builder::repaymentRateInPercent);
-        readDurationInMonths(builder::durationInMonths);
+        readDurationInMonths(builder::durationInYears);
 
         return builder;
     }
@@ -59,7 +59,7 @@ final class CreditParametersFromConsole {
     }
 
     private void readDurationInMonths(Consumer<Integer> setter) {
-        readWithRetry("Laufzeit in Montaten, z.B. 12: ", this::readNumber, setter);
+        readWithRetry("Laufzeit in Jahren, z.B. 3: ", this::readNumber, setter);
     }
 
     private int readNumber() {

@@ -23,7 +23,7 @@ public final class RepaymentPlannerTest {
 
     @Test
     public void uiShouldPrintCreditParameters() throws Exception {
-        fakeUserInput.type("05.2015").type("1000,00").type("2,00").type("3,00").type("12");
+        fakeUserInput.type("05.2015").type("1000,00").type("2,00").type("3,00").type("1");
 
         new RepaymentPlanner(fakeUserInput, out).run();
 
@@ -35,7 +35,7 @@ public final class RepaymentPlannerTest {
 
     @Test
     public void uiShouldPrintRepaymentLines() throws Exception {
-        fakeUserInput.type("05.2015").type("1000,00").type("2,00").type("3,00").type("12");
+        fakeUserInput.type("05.2015").type("1000,00").type("2,00").type("3,00").type("1");
 
         new RepaymentPlanner(fakeUserInput, out).run();
 
@@ -55,7 +55,7 @@ public final class RepaymentPlannerTest {
                 .garbage("1000.00€").type("1000,00")
                 .garbage("1,00%").type("2,00")
                 .garbage("103,00").type("3,00")
-                .garbage("Hallo").type("12");
+                .garbage("Hallo").type("1");
 
         new RepaymentPlanner(fakeUserInput, out).run();
 
