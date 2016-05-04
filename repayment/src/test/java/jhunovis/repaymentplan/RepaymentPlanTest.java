@@ -21,12 +21,13 @@ public final class RepaymentPlanTest {
 
     @Test
     public void createRepaymentPlan_PaymentLines() throws Exception {
-        RepaymentPlan repaymentPlan = RepaymentPlan.builder()
+        RepaymentPlan repaymentPlan = CreditParameters.builder()
                 .starting(LocalDate.of(2015, Month.NOVEMBER, 30))
                 .creditVolume(Money.euro("100000.00"))
                 .interestRateInPercent("2.12")
                 .repaymentRateInPercent("2.00")
                 .durationInYears(10)
+                .createCreditParameters()
                 .createRepaymentPlan();
 
         assertThat(
@@ -46,12 +47,13 @@ public final class RepaymentPlanTest {
 
     @Test
     public void createRepaymentPlan_Summary() throws Exception {
-        RepaymentPlan repaymentPlan = RepaymentPlan.builder()
+        RepaymentPlan repaymentPlan = CreditParameters.builder()
                 .starting(LocalDate.of(2015, Month.NOVEMBER, 30))
                 .creditVolume(Money.euro("100000.00"))
                 .interestRateInPercent("2.12")
                 .repaymentRateInPercent("2.00")
                 .durationInYears(10)
+                .createCreditParameters()
                 .createRepaymentPlan();
 
         assertThat(

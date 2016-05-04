@@ -21,12 +21,13 @@ import static org.junit.Assert.assertThat;
  */
 public final class RepaymentPlanPrinterTest {
 
-    private final RepaymentPlan repaymentPlan = RepaymentPlan.builder()
+    private final RepaymentPlan repaymentPlan = CreditParameters.builder()
             .starting(LocalDate.of(2016, Month.MAY, 31))
             .creditVolume(Money.euro("1000.00"))
             .interestRateInPercent("5.00")
             .repaymentRateInPercent("10.00")
             .durationInMonths(5)
+            .createCreditParameters()
             .createRepaymentPlan();
 
     private final StringWriter capturedPrintOut = new StringWriter();

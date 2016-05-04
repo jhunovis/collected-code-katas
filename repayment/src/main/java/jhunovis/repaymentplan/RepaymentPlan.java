@@ -2,8 +2,6 @@ package jhunovis.repaymentplan;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
@@ -21,13 +19,6 @@ public final class RepaymentPlan {
     private final CreditParameters creditParameters;
     @NotNull
     private final List<MonthlyRepayment> monthlyRepayments;
-
-    /**
-     * @return a builder for repayment plans
-     */
-    public static Builder builder() {
-        return new Builder();
-    }
 
     RepaymentPlan(@NotNull CreditParameters creditParameters, @NotNull List<MonthlyRepayment> monthlyRepayments) {
         this.creditParameters = creditParameters;
@@ -80,79 +71,4 @@ public final class RepaymentPlan {
         }
     }
 
-    /**
-     * Creates {@link RepaymentPlan} instances.
-     *
-     * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
-     * @version $Revision$ $Date$ $Author$
-     */
-    public static final class Builder {
-
-        private static final BigDecimal BD_100 = new BigDecimal("100.00");
-
-        private LocalDate startingMonth;
-        private Money creditVolume;
-        private BigDecimal interestRateInPercent;
-        private BigDecimal repaymentRateInPercent;
-        private int durationInMonths;
-
-        public Builder starting(LocalDate startingMonth) {
-            this.startingMonth = startingMonth;
-            return this;
-        }
-
-        public Builder creditVolume(Money creditVolume) {
-            if (creditVolume.isNegative()) {
-                throw new IllegalArgumentException("Expecting credit volume as positive amount!");
-            }
-            this.creditVolume = creditVolume;
-            return this;
-        }
-
-        public Builder interestRateInPercent(BigDecimal interestRateInPercent) {
-            assertIsPercentage(interestRateInPercent);
-            this.interestRateInPercent = interestRateInPercent;
-            return this;
-        }
-
-        public Builder interestRateInPercent(String interestRateInPercent) {
-            return interestRateInPercent(new BigDecimal(interestRateInPercent));
-        }
-
-        public Builder repaymentRateInPercent(BigDecimal repaymentRateInPercent) {
-            assertIsPercentage(repaymentRateInPercent);
-            this.repaymentRateInPercent = repaymentRateInPercent;
-            return this;
-        }
-
-        public Builder repaymentRateInPercent(String repaymentRateInPercent) {
-            return repaymentRateInPercent(new BigDecimal(repaymentRateInPercent));
-        }
-
-        public Builder durationInMonths(int durationInMonths) {
-            if (durationInMonths < 1) {
-                throw new IllegalArgumentException("Expecting a runtime of at least a month! Was: " + durationInMonths);
-            }
-            this.durationInMonths = durationInMonths;
-            return this;
-        }
-
-        public Builder durationInYears(int durationInYears) {
-            this.durationInMonths = durationInYears * 12;
-            return this;
-        }
-
-        public RepaymentPlan createRepaymentPlan() {
-            CreditParameters creditParameters = new CreditParameters(startingMonth, creditVolume, interestRateInPercent,
-                    durationInMonths, repaymentRateInPercent);
-            return creditParameters.createRepaymentPlan();
-        }
-
-        private void assertIsPercentage(BigDecimal percentage) {
-            if (percentage.signum() == -1 || percentage.compareTo(BD_100) >= 1 ) {
-                throw new IllegalArgumentException(percentage + " is not a valid percentage!");
-            }
-        }
-
-    }
 }

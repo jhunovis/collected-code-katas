@@ -35,6 +35,13 @@ public final class CreditParameters {
         this.initialRepaymentRateInPercent = initialRepaymentRateInPercent;
     }
 
+    /**
+     * @return a builder for repayment plans
+     */
+    public static CreditParameterBuilder builder() {
+        return new CreditParameterBuilder();
+    }
+
     public Money paymentRate() {
         return creditVolume.monthlyRate(interestRateInPercent.add(initialRepaymentRateInPercent));
     }

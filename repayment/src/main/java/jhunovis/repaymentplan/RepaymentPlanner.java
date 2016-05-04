@@ -30,12 +30,12 @@ public final class RepaymentPlanner {
     }
 
     void run() {
-        RepaymentPlan.Builder builder = readCreditParameters();
-        RepaymentPlan repaymentPlan = builder.createRepaymentPlan();
+        CreditParameterBuilder creditParametersBuilder = readCreditParameters();
+        RepaymentPlan repaymentPlan = creditParametersBuilder.createCreditParameters().createRepaymentPlan();
         printCreditDetails(repaymentPlan);
     }
 
-    private RepaymentPlan.Builder readCreditParameters() {
+    private CreditParameterBuilder readCreditParameters() {
         return creditParametersFromConsole.readCreditParametersFromConsole();
     }
 

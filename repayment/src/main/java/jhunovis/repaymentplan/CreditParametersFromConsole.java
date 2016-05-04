@@ -29,10 +29,10 @@ final class CreditParametersFromConsole {
     /**
      * Ask the user to enter credit parameters.
      */
-    public RepaymentPlan.Builder readCreditParametersFromConsole() {
+    public CreditParameterBuilder readCreditParametersFromConsole() {
         println("Eingabe der Kreditparameter");
 
-        RepaymentPlan.Builder builder = RepaymentPlan.builder();
+        CreditParameterBuilder builder = CreditParameters.builder();
         readStartDate(builder::starting);
         readCreditVolume(builder::creditVolume);
         readInterestRateInPercent(builder::interestRateInPercent);
