@@ -1,61 +1,39 @@
-= Programmierung eines Tilgungsplans
+= Repayment Plan Kata
 
-Bitte entwickle ein Programm, das durch die Eingaben…
+I was given this exercise for a job application. No need to mention the firm was from the financing domain...
 
-* des Darlehensbetrages,
-* des Sollzinses (in Prozent),
-* der anfänglichen Tilgung (in Prozent) und
-* der Zinsbindung (in Jahren)
+== Assignment
 
-den jhunovis.repaymentplan.Tilgungsplan eines Darlehens mit gleichbleibender Rate erstellen kann.
+Implement a program which computes a "repayment plan" base on the following parameters:
 
-Diese tabellarische Übersicht zeigt dir, wie ein jhunovis.repaymentplan.Tilgungsplan aufgebaut ist:
+* the credit volume,
+* the annual interest rate in percent,
+* the initial repayment rate in percent
+* duration in years
 
-Datum
-Restschuld
-Zinsen
-Tilgung(+) / Auszahlung(-)
-Rate
-30.11.2015
--100.000,00 €
-0,00 €
--100.000,00 €
--100.000,00 €
-31.12.2015
--99.833,34 €
-176,67 €
-166,66 €
-343,33 €
-31.01.2016
--99.666,38 €
-176,37 €
-166,96 €
-343,33 €
+This kind of credit is pay for at a fixed rate over the given duration.
 
+The repayment plan consist of a number of rows. The first of which is the payout of the credit volume.
+Any further lines represent the state of the credit after each monthly repayment rate. each row shows the
+due date of the repayment the remaining debt, the payed interest, repayment (which is the amount by which the debt is
+reduced), and the fixed repayment rate. The due date is always the last day of the month. The first repayment is
+due on the last day of the month after the payout.
 
-…
+The last line of the plan is a summary row showing the remaining debt an the totals over the individual rows.
 
+== Example
 
-31.10.2025
--77.949,76 €
-138,07 €
-205,26 €
-343,33 €
-30.11.2025
--77.744,14 €
-137,71 €
-205,62 €
-343,33 €
-Zinsbindungsende
--77.744,14 €
-18.943,74 €
-22.255,86 €
-41.199,60 €
+.Table Example Repayment Plan
+|===
+| Date            | Debt         |   Interest | Repayment(+) / Payout(-)  | Rate
 
-(Zinsbindung: 10 Jahre, Sollzins: 2,12%, Anfängliche Tilgung: 2%)
+|30.11.2015       |-100.000,00 € |     0,00 € |              -100.000,00 € |-100.000,00 €
+|31.12.2015       | -99.833,34 € |   176,67 € |                   166,66 € |     343,33 €
+|31.01.2016       | -99.666,38 € |   176,37 € |                   166,96 € |     343,33 €
+|    …            |      …       |    …       |                    …       |    …
+|31.10.2025       | -77.949,76 € |   138,07 € |                   205,26 € |     343,33 €
+|30.11.2025       | -77.744,14 € |   137,71 € |                   205,62 € |     343,33 €
+|Zinsbindungsende | -77.744,14 € |18.943,74 € |                22.255,86 € |  41.199,60 €
+|===
 
-Ein jhunovis.repaymentplan.Tilgungsplan besteht aus einer Reihe von Einträgen, wobei der erste die Auszahlung des Darlehens widerspiegelt.
-Jeder (weitere) Eintrag besteht aus einem Datum, der Restschuld, den Zinsen, der Tilgung bzw. Auszahlung sowie der Rate.
-Die Auszahlung soll immer am letzten Tag des aktuellen Monats erfolgen. Die erste Tilgung erfolgt am letzten Tag
-des darauffolgenden Monats. Die Zahlungen eines Tilgungsplans sind monatlich darzustellen.
-Zum Ende der Zinsbindung sind die Restschuld sowie die geleisteten Zahlungen von Interesse.
+(duration: 10 years, interest: 2,12%, repayment rate: 2%)
