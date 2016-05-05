@@ -19,7 +19,7 @@ public final class RepaymentPlan {
 
     RepaymentPlan(@NotNull CreditParameters creditParameters, @NotNull List<MonthlyRepayment> monthlyRepayments) {
         this.creditParameters = creditParameters;
-        this.monthlyRepayments = new ArrayList<>(monthlyRepayments);
+        this.monthlyRepayments = Collections.unmodifiableList(new ArrayList<>(monthlyRepayments));
     }
 
     /**
@@ -34,7 +34,7 @@ public final class RepaymentPlan {
      */
     @NotNull
     public List<MonthlyRepayment> monthlyRepayments() {
-        return Collections.unmodifiableList(monthlyRepayments);
+        return monthlyRepayments;
     }
 
     /**
