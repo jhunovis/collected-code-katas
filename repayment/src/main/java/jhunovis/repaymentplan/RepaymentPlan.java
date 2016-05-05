@@ -2,13 +2,10 @@ package jhunovis.repaymentplan;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
- * A repayment plan plan for credit with a fixed interest rate over a predefined duration.
+ * A repayment plan plan for credit with a fixed interest rate over a predefined duration. Immutable.
  *
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
@@ -22,7 +19,7 @@ public final class RepaymentPlan {
 
     RepaymentPlan(@NotNull CreditParameters creditParameters, @NotNull List<MonthlyRepayment> monthlyRepayments) {
         this.creditParameters = creditParameters;
-        this.monthlyRepayments = monthlyRepayments;
+        this.monthlyRepayments = new ArrayList<>(monthlyRepayments);
     }
 
     /**
