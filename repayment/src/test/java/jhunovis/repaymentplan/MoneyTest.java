@@ -82,4 +82,30 @@ public final class MoneyTest {
     public void compareAmount_ShouldThrowExceptionWhenComparingDifferentCurrencies() {
         Money.euro("10.0").compareTo(Money.forAmountAndCurrency("10.00", "USD"));
     }
+
+    @Test
+    @Parameters({
+            "5.00, 6.00, 5.00",
+            "2.00, 1.00, 1.00",
+            "3.33, 3.33, 3.33"
+    })
+    public void min(String firstAmount, String secondAmount, String expectedMinimum) {
+        assertThat(
+                Money.min(Money.euro(firstAmount), Money.euro(secondAmount)),
+                is(equalTo(Money.euro(expectedMinimum)))
+        );
+    }
+
+    @Test
+    @Parameters({
+            "5.00, 6.00, 6.00",
+            "2.00, 1.00, 2.00",
+            "3.33, 3.33, 3.33"
+    })
+    public void max(String firstAmount, String secondAmount, String expectedMaximum) {
+        assertThat(
+                Money.max(Money.euro(firstAmount), Money.euro(secondAmount)),
+                is(equalTo(Money.euro(expectedMaximum)))
+        );
+    }
 }

@@ -177,4 +177,20 @@ public final class Money implements Comparable<Money>{
             throw new IllegalArgumentException("Cannot compare amounts with different currencies: " + this + " against " + other);
         }
     }
+
+    public static Money max(@NotNull Money firstAmount, @NotNull Money secondAmount) {
+        if (firstAmount.compareTo(secondAmount) > 0) {
+            return firstAmount;
+        } else {
+            return secondAmount;
+        }
+    }
+
+    public static Money min(@NotNull Money firstAmount, @NotNull Money secondAmount) {
+        if (firstAmount.compareTo(secondAmount) < 0) {
+            return firstAmount;
+        } else {
+            return secondAmount;
+        }
+    }
 }
