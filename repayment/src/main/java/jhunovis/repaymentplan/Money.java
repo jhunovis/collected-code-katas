@@ -12,7 +12,7 @@ import java.util.Locale;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public final class Money {
+public final class Money implements Comparable<Money>{
 
     @NotNull
     private final BigDecimal amount;
@@ -169,4 +169,12 @@ public final class Money {
         return amount + " " + currency.getCurrencyCode();
     }
 
+    @Override
+    public int compareTo(@NotNull Money other) {
+        if (this.currency().equals(other.currency())) {
+            return this.amount().compareTo(other.amount());
+        } else {
+            throw new IllegalArgumentException("Cannot compare amounts with different currencies: " + this + " against " + other);
+        }
+    }
 }
