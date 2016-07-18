@@ -46,6 +46,30 @@ public final class RepaymentPlanTest {
     }
 
     @Test
+    public void createRepaymentPlan_CreditRepaidBeforeDurationEnds_RemainingRatesShouldAmountToZeroEach() throws Exception {
+        RepaymentPlan repaymentPlan = CreditParameters.builder()
+                .starting(LocalDate.of(2015, Month.DECEMBER, 30))
+                .creditVolume(Money.euro("1200.00"))
+                .interestRateInPercent("1.00")
+                .repaymentRateInPercent("50.00")
+                .durationInMonths(25)
+                .createCreditParameters()
+                .createRepaymentPlan();
+
+        assertThat(
+                repaymentPlan.monthlyRepayments(),
+                CoreMatchers.hasItems(
+                        isRepaymentWith(LocalDate.of(2017, Month.NOVEMBER, 30),
+                                Money.euro("39.40"), Money.euro("0.08"), Money.euro("50.92"), Money.euro("51.00")),
+                        isRepaymentWith(LocalDate.of(2017, Month.DECEMBER, 31),
+                                Money.euro("0.00"), Money.euro("0.03"), Money.euro("39.40"), Money.euro("39.43")),
+                        isRepaymentWith(LocalDate.of(2018, Month.JANUARY, 31),
+                                Money.euro("0.00"), Money.euro("0.00"), Money.euro("0.00"), Money.euro("0.00"))
+                )
+        );
+    }
+
+    @Test
     public void createRepaymentPlan_Summary() throws Exception {
         RepaymentPlan repaymentPlan = CreditParameters.builder()
                 .starting(LocalDate.of(2015, Month.NOVEMBER, 30))

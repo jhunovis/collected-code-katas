@@ -16,6 +16,10 @@ final class TestUtils {
         return new BigDecimal(interestRate);
     }
 
+    public static Money monthlyRate(String amount) {
+        return Money.euro(amount);
+    }
+
     public static Money anyMoney() {
         return Money.forAmountAndCurrency("0.00", "USD");
     }

@@ -44,7 +44,6 @@ public final class MonthlyRepayment {
         return debt.subtract(repayment());
     }
 
-
     /**
      * @return the interest rate. Fix over runtime of credit.
      */
@@ -63,7 +62,10 @@ public final class MonthlyRepayment {
      * @return the effective amount by which the debt for this month will be reduced by the current repayment
      */
     public Money repayment() {
-        return monthlyRate().subtract(interest());
+        return Money.min(
+                monthlyRate().subtract(interest()),
+                debt
+        );
     }
 
     /**
@@ -80,12 +82,21 @@ public final class MonthlyRepayment {
      */
     public MonthlyRepayment nextMonthlyRepayment() {
         return new MonthlyRepayment(
-                lastDayOfNextMonth(), remainingDept(), interestRate, monthlyRate()
+                lastDayOfNextMonth(), remainingDept(), interestRate, nextMonthlyRate()
         );
     }
 
     private LocalDate lastDayOfNextMonth() {
         return dueDate.plusMonths(1L).with(TemporalAdjusters.lastDayOfMonth());
+    }
+
+    private Money nextMonthlyRate() {
+        Money remainingDept = remainingDept();
+        return Money.min(
+                monthlyRate(),
+                // if the normal rate is larger than the remaining debt plus interest of the  next month, we use that
+                remainingDept.plus(remainingDept.monthlyRate(interestRate))
+        );
     }
 
     @Override

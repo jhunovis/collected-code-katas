@@ -84,4 +84,36 @@ public final class MonthlyRepaymentTest {
         );
     }
 
+    @Test
+    public void nextMonthlyRate_GivenRepaymentRateResultsInSmallRemainingDebt_NextRateShouldBeReduced() throws Exception {
+        MonthlyRepayment monthlyRepayment = new MonthlyRepayment(LocalDate.of(2015, Month.DECEMBER, 31),
+                Money.euro("1200.00"), interestRate("5.00"), monthlyRate("700.00"));
+
+        assertThat(
+                monthlyRepayment.nextMonthlyRepayment(),
+                is(equalTo(
+                        new MonthlyRepayment(
+                                LocalDate.of(2016, Month.JANUARY, 31),
+                                Money.euro("505.00"), interestRate("5.00"), monthlyRate("507.10")
+                        )
+                ))
+        );
+    }
+
+    @Test
+    public void nextMonthlyRate_GivenRepaymentRateIsLargerThanRemainingDebt_NextDebtAndPaymentRateShouldBeZero() throws Exception {
+        MonthlyRepayment monthlyRepayment = new MonthlyRepayment(LocalDate.of(2018, Month.FEBRUARY, 28),
+                Money.euro("1200.00"), interestRate("5.00"), monthlyRate("1205.00"));
+
+        assertThat(
+                monthlyRepayment.nextMonthlyRepayment(),
+                is(equalTo(
+                        new MonthlyRepayment(
+                                LocalDate.of(2018, Month.MARCH, 31),
+                                Money.euro("0.00"), interestRate("5.00"), monthlyRate("0.00")
+                        )
+                ))
+        );
+    }
+
 }
