@@ -1,9 +1,13 @@
 package jhunovis.repaymentplan;
 
-import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import java.time.LocalDate;
+import java.time.Month;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * A Hamcrest matcher for {@link MonthlyRepayment} instances.
@@ -11,46 +15,48 @@ import java.time.LocalDate;
  * @author <a href="mailto:jhunovis@gmail.com">Jan Hackel</a>
  * @version $Revision$ $Date$ $Author$
  */
-public final class IsMonthlyRepayment extends BaseMatcher<MonthlyRepayment> {
+public final class IsMonthlyRepayment extends TypeSafeMatcher<MonthlyRepayment> {
 
-    private final LocalDate dueDate;
-    private final Money remainingDebt;
-    private final Money dueInterest;
-    private final Money repayment;
-    private final Money rate;
+    private final Collection<Matcher<MonthlyRepayment>> propertyMatchers;
 
-    public IsMonthlyRepayment(LocalDate dueDate, Money remainingDebt, Money dueInterest, Money repayment, Money rate) {
-        this.dueDate = dueDate;
-        this.remainingDebt = remainingDebt;
-        this.dueInterest = dueInterest;
-        this.repayment = repayment;
-        this.rate = rate;
+    @SafeVarargs
+    private IsMonthlyRepayment(Matcher<MonthlyRepayment>... propertyMatchers) {
+        this.propertyMatchers = Arrays.asList(propertyMatchers);
     }
 
-    public static IsMonthlyRepayment isRepaymentWith(LocalDate dueDate, Money remainingDebt, Money dueInterest, Money repayment, Money rate) {
-        return new IsMonthlyRepayment(dueDate, remainingDebt, dueInterest, repayment, rate);
+    @SafeVarargs
+    public static IsMonthlyRepayment isRepaymentWith(Matcher<MonthlyRepayment>... fieldMatchers) {
+        return new IsMonthlyRepayment(fieldMatchers);
+    }
+
+    public static Matcher<MonthlyRepayment> dueDate(int year, Month month, int dayOfMonth) {
+        return new PropertyMatcher<>("dueDate", LocalDate.of(year, month, dayOfMonth), MonthlyRepayment::dueDate);
+    }
+
+    public static Matcher<MonthlyRepayment> remainingDebt(Money remainingDebt) {
+        return new PropertyMatcher<>("remainingDebt", remainingDebt, MonthlyRepayment::remainingDept);
+    }
+
+    public static Matcher<MonthlyRepayment> interest(Money interest) {
+        return new PropertyMatcher<>("interest", interest, MonthlyRepayment::interest);
+    }
+
+    public static Matcher<MonthlyRepayment> repayment(Money repayment) {
+        return new PropertyMatcher<>("repayment", repayment, MonthlyRepayment::repayment);
+    }
+
+    public static Matcher<MonthlyRepayment> monthlyRate(Money monthlyRate) {
+        return new PropertyMatcher<>("monthlyRate", monthlyRate, MonthlyRepayment::monthlyRate);
     }
 
     @Override
-    public boolean matches(Object item) {
-        if (item instanceof MonthlyRepayment) {
-            MonthlyRepayment repayment = (MonthlyRepayment) item;
-            return repayment.dueDate().equals(dueDate)
-                    && repayment.remainingDept().equals(remainingDebt)
-                    && repayment.interest().equals(dueInterest)
-                    && repayment.repayment().equals(this.repayment)
-                    && repayment.monthlyRate().equals(rate);
-        }
-        return false;
+    protected boolean matchesSafely(MonthlyRepayment item) {
+        return propertyMatchers.stream()
+                .allMatch(p -> p.matches(item));
     }
 
     @Override
     public void describeTo(Description description) {
-        description.appendText("MonthlyRepayment{dueDate=").appendValue(dueDate)
-                .appendText(" remainingDebt=").appendValue(remainingDebt)
-                .appendText(" interest=").appendValue(dueInterest)
-                .appendText(" repayment=").appendValue(repayment)
-                .appendText(" rate=").appendValue(rate)
-                .appendText("}");
+        description.appendList("MonthlyRepayment{", ", ", "}", propertyMatchers);
     }
 }
